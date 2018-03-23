@@ -5,22 +5,14 @@ import xlsxwriter
 mongoClient = MongoClient();
 
 
-db = mongoClient.Cyber
+db = mongoClient.Jay
 
-
-collection = db.TCP;
-
-collection = db.cowrie
-
-dataset = db.cowrie.find({"eventid":"cowrie.session.connect"})
-
-
-
+dataset = db.cowrie.find({"eventid":"cowrie.login.success"})
 
 
 
 # Create a workbook and add a worksheet.
-workbook = xlsxwriter.Workbook('cowrieSessionConnect.xlsx')
+workbook = xlsxwriter.Workbook('cowrieLoginSuccess.xlsx')
 worksheet = workbook.add_worksheet()
 
 row =0
