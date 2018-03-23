@@ -7,14 +7,13 @@ mongoClient = MongoClient();
 
 db = mongoClient.Cyber
 
-collection = db.Test;
+collection = db.BigData1;
 
 
-for j in range(98,100):
-    a = rdpcap("Doraemon/nobita"+str(j))
-
+for j in range(1,7):
+    a = rdpcap("DARPA/demos"+str(j))
+    print("Data Inserted Packet-->"+str(j))
     for i in range(0,len(a),1):
-        print("Packet inserted"+str(i))
         data = a[0].show()
         x = packetToJson(data)
         y = {}

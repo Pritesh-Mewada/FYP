@@ -7,7 +7,7 @@ mongoClient = MongoClient();
 
 db = mongoClient.Cyber
 
-collection = db.Test1;
+collection = db.TCP;
 
 # Create a workbook and add a worksheet.
 workbook = xlsxwriter.Workbook('Dataset.xlsx')
@@ -17,7 +17,7 @@ row =0
 col=0
 dataset = collection.find({})
 
-for i in range(0,dataset.count()):
+for i in range(0,100000):
     worksheet.write(row, 0,dataset[i]['Ethernet']['src'])
     worksheet.write(row, 1, dataset[i]['TCP']['flags'])
     worksheet.write(row, 2, dataset[i]['TCP']['dport'])
