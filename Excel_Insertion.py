@@ -7,29 +7,33 @@ mongoClient = MongoClient();
 
 db = mongoClient.Cyber
 
+
 collection = db.TCP;
 
+collection = db.cowrie
+
+dataset = db.cowrie.find({"eventid":"cowrie.session.connect"})
+
+
+
+
+
+
 # Create a workbook and add a worksheet.
-workbook = xlsxwriter.Workbook('Dataset.xlsx')
+workbook = xlsxwriter.Workbook('cowrieSessionConnect.xlsx')
 worksheet = workbook.add_worksheet()
 
 row =0
 col=0
-dataset = collection.find({})
 
-for i in range(0,100000):
-    worksheet.write(row, 0,dataset[i]['Ethernet']['src'])
-    worksheet.write(row, 1, dataset[i]['TCP']['flags'])
-    worksheet.write(row, 2, dataset[i]['TCP']['dport'])
-    worksheet.write(row, 3, dataset[i]['TCP']['sport'])
-    worksheet.write(row, 4, dataset[i]['IP']['src'])
-    worksheet.write(row, 5, dataset[i]['IP']['proto'])
-    worksheet.write(row, 6, dataset[i]['IP']['tos'])
-    worksheet.write(row, 7, dataset[i]['IP']['dst'])
-    worksheet.write(row, 8, dataset[i]['IP']['len'])
-    worksheet.write(row, 9, dataset[i]['IP']['version'])
-    worksheet.write(row, 10, dataset[i]['IP']['flags'])
-    worksheet.write(row, 11, dataset[i]['IP']['ttl'])
+
+
+
+for i in range(0,dataset.count()):
+    dictobject=dict(dataset[i])
+    object = list(dictobject.keys())
+    for c in range(0,len(object)):
+        worksheet.write(row, c, str(dictobject[object[c]]));
     row = row+1
 
 workbook.close()
